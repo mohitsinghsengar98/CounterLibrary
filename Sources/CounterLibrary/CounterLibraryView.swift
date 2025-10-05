@@ -16,6 +16,14 @@ public class CounterViewModel: ObservableObject {
     public func increment() {
         count += 1
     }
+    
+    public func decrement() {
+        count -= 1
+    }
+    
+    public func reset() {
+        count = 0
+    }
 }
 
 public struct CounterLibraryView: View {
@@ -24,12 +32,24 @@ public struct CounterLibraryView: View {
     public init() {}
     
     public var body: some View {
-        VStack {
-            Text("Count: \(viewModel.count)")
-            Button("Increment") {
-                viewModel.increment()
+        NavigationStack {
+            VStack {
+                Text("Count: \(viewModel.count)")
+                Button("Increment") {
+                    viewModel.increment()
+                }
+                
+                Button("Decrement") {
+                    if(viewModel.count>1){
+                        viewModel.decrement()
+                    }
+                }
+                
+                Button("Reset") {
+                    viewModel.reset()
+                }
             }
-        }
-        .padding()
+            .padding()
+        }.navigationTitle("Counter")
     }
 }
