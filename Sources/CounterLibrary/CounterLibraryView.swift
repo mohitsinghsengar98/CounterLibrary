@@ -40,7 +40,7 @@ public struct CounterLibraryView: View {
                 }
                 
                 Button("Decrement") {
-                    if(viewModel.count>1){
+                    if(viewModel.count>0){
                         viewModel.decrement()
                     }
                 }
